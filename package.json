@@ -1,0 +1,26 @@
+{
+  "name": "@fruteroclub/content",
+  "version": "0.1.0",
+  "description": "Editorial content for frutero.club — bilingual (ES + EN) posts. schema/article.ts is the single source of truth for ArticleMeta, imported by the app.",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "exports": {
+    ".": "./schema/article.ts",
+    "./schema/article": "./schema/article.ts"
+  },
+  "types": "./schema/article.ts",
+  "files": [
+    "schema",
+    "posts"
+  ],
+  "scripts": {
+    "validate": "bun run scripts/validate.ts"
+  },
+  "dependencies": {
+    "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}
