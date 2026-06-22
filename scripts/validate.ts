@@ -38,6 +38,14 @@ function parseLocale(slug: string, lang: (typeof LOCALES)[number], file: string)
     for (const issue of result.error.issues) {
       errors.push(`${slug}/${lang}.mdx: ${issue.path.join('.') || '(root)'} — ${issue.message}`)
     }
+    return
+  }
+  // The schema regex is format-only — also assert `date` is a REAL calendar date
+  // (e.g. reject 2026-06-31, which would otherwise roll over to 2026-07-01 at render
+  // and skew `latest()` ordering). Round-trip through Date and compare.
+  const { date } = result.data
+  if (new Date(`${date}T00:00:00Z`).toISOString().slice(0, 10) !== date) {
+    errors.push(`${slug}/${lang}.mdx: date — "${date}" is not a real calendar date`)
   }
 }
 
