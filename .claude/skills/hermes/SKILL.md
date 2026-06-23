@@ -47,9 +47,15 @@ a human runs `CONTRIBUTING.md` and merges. Your output is a proposal.
    - Editorial, not promotional. Lead, don't bury (first sentence = who/what). `dek` ≤280 chars.
    - **Citations:** link + summarize, NEVER copy. Paraphrase; no lifted paragraphs; no quote
      longer than one sentence. Body uses `##` headers and `**bold**`; plain markdown only.
-6. **Validate:** `bun install` (first run) then `bun run validate`. It must be green
+6. **Humanize (required).** Run BOTH bodies (ES + EN) through the **humanizer** skill
+   (<https://github.com/blader/humanizer>) and apply its fixes so the copy doesn't read as
+   AI-generated (em-dash overuse, rule-of-three, inflated/promotional phrasing, vague
+   attributions, negative parallelisms, filler). If the skill isn't installed:
+   `git clone https://github.com/blader/humanizer ~/.claude/skills/humanizer`. No humanizer
+   available → self-edit to the same bar (plain, direct, varied sentences).
+7. **Validate:** `bun install` (first run) then `bun run validate`. It must be green
    (schema + bilingual + unique slug + real date). Fix and re-run until it passes.
-7. **Branch + PR:**
+8. **Branch + PR:**
    ```bash
    git checkout -b post/<slug>
    git add posts/<slug>
@@ -57,7 +63,7 @@ a human runs `CONTRIBUTING.md` and merges. Your output is a proposal.
    git push -u origin post/<slug>
    gh pr create --base main --title "post: <short title> (ES+EN)" --body "<source URLs + one-line summary; note this is a Hermes draft for human merge>"
    ```
-8. **Report** the PR URL. CI (`validate.yml`) runs on the PR; a human applies
+9. **Report** the PR URL. CI (`validate.yml`) runs on the PR; a human applies
    `CONTRIBUTING.md` (accuracy, vocab ban, image rights/alt, citations) and merges. The post
    goes live at the next daily edition (00:00 UTC-6) or a manual deploy-hook dispatch.
 

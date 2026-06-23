@@ -49,6 +49,16 @@ posts/<YYYY-MM-DD-kebab-slug>/en.mdx   ← English (required)
 - **Lead, don't bury.** First sentence states the who/what. Deks ≤280 chars.
 - **Headers** in the body use `##`. Bold (`**…**`) for emphasis. Plain markdown only.
 
+## Write like a human — run the humanizer (required)
+
+After drafting, pass BOTH bodies (ES + EN) through the **humanizer** skill
+(<https://github.com/blader/humanizer>) and apply its fixes, so the copy doesn't read as
+AI-generated. It targets em-dash overuse, the rule-of-three, inflated/promotional
+phrasing ("plays a crucial role", "stands as a testament"), vague attributions ("studies
+show"), negative parallelisms ("not only… but also"), and filler. If the skill isn't
+installed: `git clone https://github.com/blader/humanizer ~/.claude/skills/humanizer`.
+No humanizer available → self-edit to the same bar (plain, direct, varied sentences).
+
 ## Citation rules (DEC-11)
 
 - **Link + summarize, NEVER copy.** Paraphrase sources in your own words. No block quotes
@@ -62,8 +72,9 @@ posts/<YYYY-MM-DD-kebab-slug>/en.mdx   ← English (required)
 
 1. Receive URLs + notes.
 2. Draft `es.mdx` + `en.mdx` under a new date-prefixed slug dir, conforming to the table above.
-3. `bun run validate` locally (or rely on CI) — it must pass.
-4. Open a PR. CI (`validate.yml`) runs on every PR: schema + bilingual + unique-slug +
+3. **Humanize** both bodies with the humanizer skill (see above) and apply the fixes.
+4. `bun run validate` locally (or rely on CI) — it must pass.
+5. Open a PR. CI (`validate.yml`) runs on every PR: schema + bilingual + unique-slug +
    real-date. A human runs `CONTRIBUTING.md` and merges.
-5. The site publishes the merged `main` at the next daily edition (00:00 UTC-6) or via a
+6. The site publishes the merged `main` at the next daily edition (00:00 UTC-6) or via a
    manual deploy-hook dispatch.
