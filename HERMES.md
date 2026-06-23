@@ -37,6 +37,21 @@ posts/<YYYY-MM-DD-kebab-slug>/en.mdx   ← English (required)
 
 `slug` + `lang` are derived from the path — do NOT put them in frontmatter.
 
+## Cover images
+
+Commit the cover art NEXT TO the post (versioned in the PR, so the build uses it for
+SEO/AEO/social). Two files:
+
+- `cover.<ext>` — the on-page cover (portrait works best). Set frontmatter `cover.src`
+  to this filename (e.g. `cover.jpg`).
+- `cover-og.<ext>` — the social card (landscape, ideally **1200×630**). Picked up
+  automatically as the OG/Twitter image, the `NewsArticle` JSON-LD `image`, and the
+  `metadata.json` image. If absent, a branded card is generated from the title.
+
+Optimize for web before committing: JPEG or WebP, ~1000px on the long edge for the
+portrait and 1200×630 for the OG, ideally ≤~300KB each (big images hurt LCP/SEO).
+`cover.alt` is REQUIRED — it is the accessibility + image-SEO alt text.
+
 ## House style
 
 - **Vocabulary ban (hard rule).** Never write `onchain`, `web3`, `crypto`, `NFT`,
