@@ -28,9 +28,15 @@ isn't available, do the steps by hand.
 ### 2. Produce these files
 
 ```
-posts/<YYYY-MM-DD-kebab-slug>/es.mdx   ← Spanish (required)
-posts/<YYYY-MM-DD-kebab-slug>/en.mdx   ← English (required)
+posts/<YYYY-MM-DD-kebab-slug>/es.mdx        ← Spanish (required)
+posts/<YYYY-MM-DD-kebab-slug>/en.mdx        ← English (required)
+posts/<YYYY-MM-DD-kebab-slug>/cover.<ext>   ← on-page cover (portrait); set cover.src to it
+posts/<YYYY-MM-DD-kebab-slug>/cover-og.<ext> ← social/OG card (landscape ~1200x630); auto-used (optional)
 ```
+
+Commit cover art in the PR (web-optimized JPEG/WebP, ≤~300KB). `cover-og.*` becomes the
+OG/Twitter image + JSON-LD + metadata.json image; if absent, a branded card is generated.
+See `HERMES.md` → "Cover images".
 
 - **Bilingual is mandatory** — both files, the SAME story. A post missing a locale fails CI.
 - The **slug is the directory name**: date-prefixed and immutable (`2026-06-22-monad-demo-night`).

@@ -33,8 +33,11 @@ a human runs `CONTRIBUTING.md` and merges. Your output is a proposal.
    guia/bitacora), `topic`, `accent` (magenta=achievement/guide/news, green=event,
    orange=mentorship/onboarding, muted), `glyph` (star/hex/diamond/grid/search/bolt),
    `collector` (`NNN/NNN`), `author` `{name, handle}`, `date` (a REAL calendar date —
-   today, or the event's date), and `cover` `{src, alt}` (alt REQUIRED; `src` = the slug
-   string for now). `sourceUrls` = the URLs you actually cited.
+   today, or the event's date), and `cover` `{src, alt}` (alt REQUIRED). If you have cover
+   art, commit `posts/<slug>/cover.<ext>` (portrait, web-optimized) and set `cover.src` to
+   that filename, plus `posts/<slug>/cover-og.<ext>` (landscape ~1200×630) for the social
+   card; otherwise leave `cover.src` as the slug (placeholder). See HERMES.md → Cover images.
+   `sourceUrls` = the URLs you actually cited.
 4. **Slug** = `<YYYY-MM-DD>-<kebab-title>`, date-prefixed and immutable. It is the directory
    name, NOT a frontmatter field. Neither `slug` nor `lang` goes in frontmatter (both are
    derived from the path).
