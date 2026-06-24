@@ -27,6 +27,9 @@ export const ArticleMeta = z.object({
   collector: z.string().regex(/^\d{3}\/\d{3}$/), // "001/120"
   cover: z.object({ src: z.string().min(1), alt: z.string().min(1) }), // DEC-6 alt required
   sourceUrls: z.array(z.string().url()).default([]), // DEC-11
+  // Editorial featuring: featured posts lead the hero rail + Lo último regardless of
+  // date, so curated pieces aren't buried by routine news. Defaults false.
+  featured: z.boolean().default(false),
 })
 export type ArticleMeta = z.infer<typeof ArticleMeta>
 
